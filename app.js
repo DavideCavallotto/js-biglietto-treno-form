@@ -1,49 +1,61 @@
-// - chiedere all'utente in suo nome
-// - chiedere all'utente i km che deve percorrere
-//     - inizializzare una variabile
+// - chiedo all'utente i km che deve percorrere
+//     - prendo dal Dom il valore dei km
 const passengerKmDomElement = document.getElementById('km-passenger'); 
 console.dir(passengerKmDomElement)
 
-
-// - chiedere all'utente la fascia di età di appartenenza
-//     - inizializzare una variabile
-const passengerAgeDomElement = document.getElementById('discount');
-console.dir(passengerAgeDomElement)
-
-// - prendo il pulsante dal Dom
-//     - inizializzare una variabile
+// - prendo dal Dom tutti gli elementi che mi servono 
+    // - prendo il pulsante dal Dom//     
 const btnDomElement = document.getElementById('btn-calc');
-console.log(btnDomElement)
+console.dir(btnDomElement)
 
-// - prendo l'elemento con la classe price-ticket
+    // - prendo l'elemento dal Dom con la classe price-ticket
 let priceTicketDomElement = document.querySelector('.price-ticket')
 
-// - dichiarare prezzo al km
-const priceForKm = 0.21;
-console.log(priceForKm) 
-
-
-// - dichiarare prezzo base del biglietto
-let basePrice = priceForKm * passengerKmDomElement.value;
-console.log(basePrice)
+    // - prendo dal Dom la select
+const selDomElement = document.getElementById('discount')
 
 // - assegno una funzione al pulsante del Dom
 btnDomElement.addEventListener('click', function () {
-    console.log('ho cliccato')
 
-    const km = parseFloat(passengerKmDomElement.value)
-    console.log(km + ' km indicati dal passegero')
+// - recupero il valore della select       
+    const rangeAge = parseInt(selDomElement.value)
+    console.log(rangeAge + ' valore età')
 
-    const prezzo = km * priceForKm
-    console.log(parseFloat(prezzo)) 
+// - inizializzo la variabile passengerKm 
+    const passengerKm = parseFloat(passengerKmDomElement.value)
     
-    priceTicketDomElement.innerHTML = prezzo.toFixed(2)   
+// - dichiaro prezzo al km
+    const priceForKm = 0.21;
+    console.log(priceForKm + ' prezzo al km') 
+
+// - dichiaro prezzo base del biglietto
+    let basePrice = priceForKm * passengerKm;
+    console.log(basePrice + ' prezzo senza sconto')
+
+    const km = parseFloat(passengerKm)
+    console.log(km + ' km indicati dal passegero') 
     
-    if(discount = 0) {              
-        priceDiscount = ((priceForKm * passengerKmDomElement.value * 20) / 100); 
-        console.log(priceDiscount)
-    } else if(discount = 2) {                
-        priceDiscount = ((priceForKm * passengerKmDomElement.value * 40) / 100);    
-    }        
- 
+    let priceDiscount = 0   
+
+// - applico sconto in base all'età     
+     if(rangeAge === 0) { 
+
+         priceDiscount = ((basePrice * 20) / 100);  
+        
+      } else if(rangeAge === 2) {  
+
+         priceDiscount = ((basePrice * 40) / 100);   
+          
+      }     
+      
+      console.log(priceDiscount + ' sconto applicato')
+
+// - calcolo il prezzo finale
+      finalPrice = basePrice - priceDiscount
+      console.log(finalPrice + ' prezzo finale')
+
+// - stampo il prezzo finale      
+    priceTicketDomElement.innerHTML = finalPrice.toFixed(2)   
+   
+    
 })
