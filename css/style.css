@@ -1,0 +1,9 @@
+body {
+    background-image: url(../img/Assistenza-Viaggi-come-si-affronta-un-imprevisto.jpg);
+    background-size: cover;
+}
+
+.container {
+    padding: 20px;
+    background-color: rgba(127, 255, 212, 0.358);    
+}
