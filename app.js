@@ -1,3 +1,4 @@
+let namePassDomElement = document.getElementById('name-passenger')
 // - chiedo all'utente i km che deve percorrere
 //     - prendo dal Dom il valore dei km
 const passengerKmDomElement = document.getElementById('km-passenger'); 
@@ -54,8 +55,10 @@ btnDomElement.addEventListener('click', function () {
       finalPrice = basePrice - priceDiscount;
       console.log(finalPrice + ' prezzo finale');
 
+      let namePassenger = namePassDomElement.value
+
 // - stampo il prezzo finale      
-    priceTicketDomElement.innerHTML = 'Il prezzo del tuo biglietto è: ' + finalPrice.toFixed(2);   
+    priceTicketDomElement.innerHTML = namePassenger + ' ' + 'Il prezzo del tuo biglietto è: ' + finalPrice.toFixed(2);   
     
     
 })
